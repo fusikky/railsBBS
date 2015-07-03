@@ -13,8 +13,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params) # formからの値を取得
-    @post.save # DBに保存
-    redirect_to posts_path
+
+    if @post.save # DBに保存
+      redirect_to posts_path
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:index])
   end
 
   private

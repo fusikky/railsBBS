@@ -2,7 +2,10 @@
 
 <ul>
   <% @posts.each do |post| %>
-  <li><%= post.text %></li>
+  <li>
+    <%= link_to post.text, post_path(post.id) %>
+    <%= link_to "[Edit]", edit_post_path(post.id) %>
+  </li>
   <% end %>
 </ul>
 
