@@ -2,13 +2,35 @@
 
 <ul class="post">
   <% @posts.each do |post| %>
-  <li class="post__text">
-    <%= link_to post.id, post_path(post.id) %>
-    <%= link_to post.text, post_path(post.id) %>
-    <%= link_to "[Edit]", edit_post_path(post.id) %>
-    <%= link_to "[Delete]", post_path(post.id), method: :delete, data: {confirm: "are you sure?"} %>
+  <li class="post__item">
+    <div>
+      <%= link_to post.id, post_path(post.id) %>
+      <div class="post__edit">
+        <%= link_to "[Edit]", edit_post_path(post.id) %>
+        <%= link_to "[Delete]", post_path(post.id), method: :delete, data: {confirm: "are you sure?"} %>
+      </div>
+    </div>
+    <div class="post-item__text">
+      <%= post.text %>
+    </div>
   </li>
   <% end %>
 </ul>
 
-<%= link_to "Add New", new_post_path %>
+<ul>
+  <li>
+    <% @users.each do |user| %>
+      <%= link_to user.id, user_path(user.id) %>
+      <%= link_to user.name, user_path(user.id) %>
+    <% end %>
+  </li>
+</ul>
+
+<%= select :user, :name, @users.map{|t| [t.name, t.id]} %>
+
+<p>
+  <%= link_to "Add New Post", new_post_path %>
+</p>
+<p>
+  <%= link_to "Add New User", new_user_path %>
+</p>

@@ -9,9 +9,19 @@ li {
 
 
 .post {
-  &__text {
+  &__item {
     border: 1px solid #ddd;
     border-radius: 2px;
     margin-bottom: 5px;
   }
+  &__edit {
+    float: right;
+  }
+}
+
+.post-item {
+  &__text {
+   margin: 10px 20px;
+  }
+
 }
