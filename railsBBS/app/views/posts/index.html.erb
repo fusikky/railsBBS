@@ -34,3 +34,13 @@
 <p>
   <%= link_to "Add New User", new_user_path %>
 </p>
+
+<p>
+  あなた:<%= current_user.name %>
+</p>
+<% if current_user == nil %>
+  <%= link_to "ログイン", new_session_path %>
+<% else %>
+  <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: 'ログアウトしますか?'} %>
+<% end %>
+
