@@ -1,8 +1,8 @@
 <h1>Posts</h1>
 
-<ul>
+<ul class="post">
   <% @posts.each do |post| %>
-  <li>
+  <li class="post__text">
     <%= link_to post.id, post_path(post.id) %>
     <%= link_to post.text, post_path(post.id) %>
     <%= link_to "[Edit]", edit_post_path(post.id) %>
