@@ -7,7 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <h1><%= link_to "Rails BBS", posts_path %></h1>
+
+<% if current_user == nil %>
+  <div class="login"><%= link_to "ログイン", new_session_path %></div>
+<% else %>
+  <div class="login"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: 'ログアウトしますか?'} %></div>
+<p>
+  Login User:<%= current_user.name %>
+</p>
+<% end %>
+
+
+
 <%= yield %>
 
 </body>

@@ -9,10 +9,17 @@ li {
 
 
 .post {
+  max-width: 500px;
+  margin: auto;
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
   &__item {
     border: 1px solid #ddd;
     border-radius: 2px;
     margin-bottom: 5px;
+    padding: 10px;
   }
   &__edit {
     float: right;
@@ -25,3 +32,8 @@ li {
   }
 
 }
+
+.login {
+  float: right;
+}
+

@@ -16,7 +16,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params) # formからの値を取得
-    @post.user_id = current_user.id
+    if current_user != nil
+      @post.user_id = current_user.id
+    end
 
     if @post.save # DBに保存
       redirect_to posts_path
@@ -48,6 +50,8 @@ class PostsController < ApplicationController
 
     def set_post
       @post = Post.find(params[:id])
-      @post.user = User.find(@post.user_id)
+      if @post.user_id != nil
+        @post.user = User.find(@post.user_id)
+      end
     end
 end

@@ -1,25 +1,33 @@
 <h1>Posts</h1>
-
-<ul class="post">
-  <% @posts.each do |post| %>
-  <li class="post__item">
-    <div>
-      <span>postid: <%= link_to post.id, post_path(post.id) %>
-      <div class="post__edit">
-        <%= link_to "[Edit]", edit_post_path(post.id) %>
-        <%= link_to "[Delete]", post_path(post.id), method: :delete, data: {confirm: "are you sure?"} %>
+<div class="post">
+  <ul class="post__list">
+    <% @posts.each do |post| %>
+    <li class="post__item">
+      <div>
+        <span><%= link_to post.id, post_path(post.id) %></span>
+        <% if post.user != nil  %>
+          <span><%= link_to post.user.name, user_path(post.user.id) %></span>
+        <% end %>
+        <div class="post__edit">
+          <%= link_to "[Edit]", edit_post_path(post.id) %>
+          <%= link_to "[x]", post_path(post.id), method: :delete, data: {confirm: "are you sure?"} %>
+        </div>
       </div>
-    </div>
-    <div class="post-item__text">
-      <% if post.user != nil  %>
-        <span><%= link_to post.user.name, user_path(post.user.id) %>
-      <% end %>
-      <div><%= post.title %></div>
-      <div><%= post.text %></div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+      <div class="post-item__text">
+        <div><%= post.title %></div>
+        <div><%= post.text %></div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+
+  <div>
+    <span>投稿</span>
+    <% @post = Post.new %>
+    <%= render 'form' %>
+  </div>
+
+</div>
 
 <p>
   <%= link_to "Add New Post", new_post_path %>
@@ -27,13 +35,4 @@
 <p>
   <%= link_to "Add New User", new_user_path %>
 </p>
-
-<% if current_user == nil %>
-  <%= link_to "ログイン", new_session_path %>
-<% else %>
-  <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: 'ログアウトしますか?'} %>
-<p>
-  あなた:<%= current_user.name %>
-</p>
-<% end %>
 

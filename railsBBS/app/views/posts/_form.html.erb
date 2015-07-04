@@ -19,7 +19,11 @@
 <% end %>
 
 <p>
-loginUser: <%= current_user.name %>
+<% if current_user != nil  %>
+  loginUser: <%= current_user.name %>
+<% else %>
+  you are guest
+<% end %>
 </p>
 
 

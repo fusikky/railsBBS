@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params) # formからの値を取得
-
     if @user.save # DBに保存
       redirect_to users_path
     else
@@ -41,7 +40,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params[:user].permit(:name, :password_digest)
+      params[:user].permit(:name, :password)
     end
 
    def set_user

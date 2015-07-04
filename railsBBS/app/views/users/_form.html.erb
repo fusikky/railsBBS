@@ -8,10 +8,13 @@
 </p>
 
 <p>
-  <%= f.label :password_digest %><br>
-  <%= f.text_field :password_digest %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <br>
   <% if @user.errors.any? %>
-  <%= @user.errors.messages[:password_digest][0]  %>
+  <%= @user.errors.messages[:password][0]  %>
   <% end %>
 </p>
 
