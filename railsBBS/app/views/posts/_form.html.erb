@@ -9,6 +9,9 @@
 <p>
   <%= f.label :text %><br>
   <%= f.text_field :text %>
+  <% if @post.errors.any? %>
+  <%= @post.errors.messages[:text][0]  %>
+  <% end %>
 </p>
 <p>
   <%= f.submit %>

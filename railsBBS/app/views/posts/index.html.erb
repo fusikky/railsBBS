@@ -3,6 +3,7 @@
 <ul>
   <% @posts.each do |post| %>
   <li>
+    <%= link_to post.id, post_path(post.id) %>
     <%= link_to post.text, post_path(post.id) %>
     <%= link_to "[Edit]", edit_post_path(post.id) %>
     <%= link_to "[Delete]", post_path(post.id), method: :delete, data: {confirm: "are you sure?"} %>
